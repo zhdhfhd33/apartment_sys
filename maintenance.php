@@ -178,8 +178,25 @@ $conn = new mysqli($host, $username, $password, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// echo 'asdfasdf';
+// echo array_key_exists('apartmentName', $_POST);
+// // $sql = 'select * from maintenanceFee';
+// if (array_key_exists('apartmentName', $_POST)){
+//    echo $POST['apartmentName'];
+// }
 
-$sql = 'select * from maintenanceFee';
+// $sql = "SELECT total_amount,usage_fee,common_maintenance_fee
+// FROM maintenanceFee
+// JOIN household ON maintenanceFee.household_id = household.household_id
+// JOIN building ON building.building_id =household.building_id
+// JOIN apartment ON apartment.apartment_id = building.apartment_id
+// WHERE apartment.apartment_name =$POST['apartmentName']
+//   AND building.building_name =$POST['buildingName'] 
+//   AND household.room_num =$POST['unitNumber'] 
+//   AND maintenanceFee.Date = $POST['date'];
+
+
+$sql = 'SELECT * from contract';
 $result = $conn->query($sql);
 
 if ($result) {

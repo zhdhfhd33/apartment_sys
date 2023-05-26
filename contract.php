@@ -143,7 +143,7 @@
               <form>
                  <div class="form-group">
                     <label for="apartmentName">Apartment Name</label>
-                    <input type="text" class="form-control" id="apartmentName" placeholder="Enter Apartment Name">
+                    <input type="text" class="form-control" id="apartmentName" placeholder="Enter Apartment Name" value = 'Hwamyeong Prugio Hericent'>
                  </div>
                  <div class="form-group">
                     <label for="buildingName">Building Name</label>
@@ -152,6 +152,7 @@
                  <div class="form-group">
                     <label for="unitNumber">Unit Number</label>
                     <input type="text" class="form-control" id="unitNumber" placeholder="Enter Unit Number">
+                    <input type="hidden" name="submit" value="1">
                  </div>
                  <button type="submit" class="btn btn-primary">Search</button>
               </form>
@@ -176,63 +177,44 @@
                }
                
                $sql = 'select * from contract';
-               $result = $conn->query($sql);
+               // $sql = "SELECT total_amount,usage_fee,common_maintenance_fee
+               // FROM maintenanceFee
+               // JOIN household ON maintenanceFee.household_id = household.household_id
+               // JOIN building ON building.building_id =household.building_id
+               // JOIN apartment ON apartment.apartment_id = building.apartment_id
+               // WHERE apartment.apartment_name = $POST['apartmentName']
+               //   AND building.building_name = $POST['buildingName']
+               //   AND household.room_num = $POST['unitNumber']
+               //   AND maintenanceFee.Date = $POST['date']";
+
+
+               // if (isset($_POST['key'])){
+                  $result = $conn->query($sql);
                
-               if ($result) {
-                   // Fetch all rows as an associative array
-                   while ($row = $result->fetch_assoc()) {
-                       // Print all columns of each row
-                       foreach ($row as $column => $value) {
-                           echo "$column: $value<br>";
-                       }
-                       echo "<br>";
-                   }
-                   // Free the result set
-                   $result->free();
-               } else {
-                   // Handle the case when the query fails
-                   echo "Error executing the query: " . $conn->error;
-               }
+                  if ($result) {
+                     // Fetch all rows as an associative array
+                     while ($row = $result->fetch_assoc()) {
+                        // Print all columns of each row
+                        foreach ($row as $column => $value) {
+                              echo "$column: $value<br>";
+                        }
+                        echo "<br>";
+                     }
+                     // Free the result set
+                     $result->free();
+                  } else {
+                     // Handle the case when the query fails
+                     echo "Error executing the query: " . $conn->error;
+                  }
+
+               // }
+               
                
                // Close the database connection
                $conn->close();
                
                
                ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

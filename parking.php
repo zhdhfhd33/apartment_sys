@@ -169,31 +169,27 @@
         <!-- Second Form -->
         <div class="row">
            <div class="col-md-12">
-              <form>
+              <form action="parking.php" method="post">
                  <div class="form-group">
                     <label for="apartmentName2">Apartment Name</label>
-                    <input type="text" class="form-control" id="apartmentName2" placeholder="Enter Apartment Name">
+                    <input type="text" class="form-control" id="apartmentName2"   name = "apartmentName2" placeholder="Enter Apartment Name" value="Hwamyeong Prugio Hericent">
                  </div>
                  <div class="form-group">
                     <label for="parkingLotId2">Parking Lot ID</label>
-                    <input type="text" class="form-control" id="parkingLotId2" placeholder="Enter Parking Lot ID">
+                    <input type="text" class="form-control" id="parkingLotId2" name = "parkingLotId2" placeholder="Enter Parking Lot ID" value="1">
                  </div>
                  <div class="form-group">
                     <label for="parkingSpaceId">Parking Space ID</label>
-                    <input type="text" class="form-control" id="parkingSpaceId" placeholder="Enter Parking Space ID">
+                    <input type="text" class="form-control" id="parkingSpaceId" name="parkingSpaceId2" placeholder="Enter Parking Space ID" value ="1">
                  </div>
                  <div class="form-group">
                     <label for="vehicleNumber">Vehicle Number</label>
-                    <input type="text" class="form-control" id="vehicleNumber" placeholder="Enter Vehicle Number">
+                    <input type="text" class="form-control" id="vehicleNumber" name ="vehicleNumber" placeholder="Enter Vehicle Number" value ="19 가  1236">
                  </div>
-                 <button type="submit" class="btn btn-primary">In</button>
-                 <button type="submit" class="btn btn-primary">Out</button>
+                 <button type="submit" name="in" value="in" class="btn btn-primary">In</button>
+                 <button type="submit" name ="out", value ="out" class="btn btn-primary">Out</button>
               </form>
-
             <div>
-
-
-
 
 
             <?php
@@ -215,7 +211,21 @@
                
                $sql = 'select * from parkinglot';
                $result = $conn->query($sql);
-               
+               // $set = isset($_POST['in']);
+               // if ($set){
+               //    echo $_POST['parkingLotId2'];
+               //    echo $_POST['parkingSpaceId2'];
+               //    $insert_sql = "UPDATE parkingspacestatus
+               //    SET Status = 'RED'
+               //    WHERE parkinglot_id=$_POST[parkingLotId2] and ParkingSpaceStatus_id = $_POST[parkingSpaceId2]";
+
+               //    if ($conn->query($sql) === TRUE) {
+               //       echo "Record updated successfully.";
+               //   } else {
+               //       echo "Error updating record: " . $conn->error;
+               //   }
+
+               // }
                if ($result) {
                    // Fetch all rows as an associative array
                    while ($row = $result->fetch_assoc()) {
